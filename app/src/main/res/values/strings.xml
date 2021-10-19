@@ -1,0 +1,20 @@
+<resources>
+    <string name="app_name">BankApp</string>
+    <string name="display_the_amount_of_currency">Выведите количество валюты</string>
+    <string name="select_currency">Выберите валюту</string>
+    <string name="title">Конвертер валют</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="name">Имя</string>
+    <string name="value">Курс:</string>
+    <string name="empty">empty</string>
+    <string name="list">Список валют</string>
+    <string name="convert">Конвертер</string>
+    <string name="enter_val">Выберите валюту</string>
+    <string name="cur_val">Выбанная валюта:</string>
+    <string name="rub">Рубли:</string>
+    <string name="id">ID</string>
+    <string name="num_code">NumCode</string>
+    <string name="char_code">CharCode</string>
+    <string name="nominal">Номинал</string>
+    <string name="previous">Предыдущий курс</string>
+</resources>
