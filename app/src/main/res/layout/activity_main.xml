@@ -7,32 +7,38 @@
     android:padding="16dp"
     tools:context=".MainActivity">
 
-    <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/resultTextView"
-        style="@style/TextAppearance.MaterialComponents.Headline3"
+    <ScrollView
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingBottom="16dp"
-        android:text="Result"
-        tools:ignore="HardcodedText" />
+        android:layout_height="wrap_content">
 
-    <SeekBar
-        android:id="@+id/seekBar"
-        android:padding="50dp"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical">
 
-    <Button
-        android:id="@+id/startButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Старт" />
+            <com.google.android.material.textview.MaterialTextView
+                android:id="@+id/resultTextView"
+                style="@style/TextAppearance.MaterialComponents.Headline3"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:paddingBottom="16dp"
+                android:text="Result"
+                android:textColor="@color/black"
+                tools:ignore="HardcodedText" />
 
-    <Button
-        android:id="@+id/stopButton"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Стоп" />
+            <Button
+                android:id="@+id/getPermissionButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="get Permission" />
+
+            <Button
+                android:id="@+id/setResultButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="set Contacts in result" />
+        </LinearLayout>
+    </ScrollView>
 
 
 </LinearLayout>
