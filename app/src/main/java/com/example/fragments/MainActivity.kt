@@ -87,8 +87,6 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
         val projection = arrayOf(
             ContactsContract.Profile._ID,
             ContactsContract.Profile.DISPLAY_NAME_PRIMARY,
-            ContactsContract.Profile.LOOKUP_KEY,
-            ContactsContract.Profile.PHOTO_THUMBNAIL_URI
         )
 
         val cursor = contentResolver.query(
