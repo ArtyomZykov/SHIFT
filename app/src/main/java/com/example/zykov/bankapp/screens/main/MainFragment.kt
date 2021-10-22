@@ -22,6 +22,8 @@ class MainFragment : Fragment() {
     private lateinit var mAdapter: MainAdapter
     private lateinit var mObserverList: Observer<AppObject>
 
+    private var _codeMenuItem: MenuItem? = null
+
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
@@ -37,6 +39,7 @@ class MainFragment : Fragment() {
 
     private fun initialization() {
         setHasOptionsMenu(true)
+
         mAdapter = MainAdapter()
         mRecyclerView = mBinding.recyclerView
         mRecyclerView.adapter = mAdapter
@@ -46,6 +49,7 @@ class MainFragment : Fragment() {
             ViewModelProvider(this, viewModelFactory).get(MainFragmentViewModel::class.java)
         mViewModel.getCourse()
         mObserverList = Observer {
+            _codeMenuItem?.isVisible = true
             mAdapter.setList(it.currency.list!!)
         }
         mViewModel.mResponse.observe(this, mObserverList)
@@ -53,6 +57,8 @@ class MainFragment : Fragment() {
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
         inflater.inflate(R.menu.main_actiom_menu, menu)
+        _codeMenuItem = menu.findItem(R.id.btn_converter)
+        _codeMenuItem?.isVisible = false
     }
 
     override fun onOptionsItemSelected(item: MenuItem): Boolean {
