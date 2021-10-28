@@ -16,8 +16,8 @@ class HasPortfolioViewHolder(parent: ViewGroup, private val onClick: (ListItem) 
 
     fun bind(item: ListItem) {
         if (item is StudentItem) {
-            itemView.textView.text = item.name + " " + item.secondName
-            itemView.textView5.text = item.description
+            itemView.textName.text = item.name + " " + item.secondName
+            itemView.textInformation.text = item.description
             itemView.imageView2.setOnClickListener { onClick(item) }
         }
     }

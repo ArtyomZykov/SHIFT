@@ -8,6 +8,17 @@
 
 
 
+        <item name="toolbarStyle">@color/white</item>
+        <item name="background">@color/gray</item>
+        <item name="dialogTheme">@color/white_500</item>
+        <item name="buttonTint">@color/purple_600</item>
+        <item name="textAppearanceBody1">@color/black_1</item>
+        <item name="textAppearanceBody2">@color/black_2</item>
+        <item name="singleLine">@color/black_3</item>
+
+
+
+
 
         <item name="colorPrimary">@color/white</item>
         <item name="colorPrimaryVariant">#DE000000</item>

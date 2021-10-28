@@ -17,12 +17,12 @@ class NoPortfolioViewHolder(parent: ViewGroup) : RecyclerView.ViewHolder(
     fun bind(item: ListItem) {
         when (item) {
             is StudentItem -> {
-                itemView.textView.text = item.name + " " + item.secondName
-                itemView.textView5.text = item.description
+                itemView.textName.text = item.name + " " + item.secondName
+                itemView.textInformation.text = item.description
             }
             is BannerItem -> {
-                itemView.textView.text = item.title
-                itemView.textView5.text = item.description
+                itemView.textName.text = item.title
+                itemView.textInformation.text = item.description
             }
         }
     }

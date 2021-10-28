@@ -4,17 +4,19 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="?background"
+    android:background="#DDDDDD"
     android:theme="@style/Theme.MyApplication"
     tools:context=".MainActivity">
+
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
         android:layout_height="56dp"
-        android:background="?toolbarStyle"
+        android:background="?colorPrimary"
         android:paddingRight="6dp"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:titleTextColor="?colorPrimaryVariant" />
@@ -45,15 +47,14 @@
         android:id="@+id/textName"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="56dp"
+
+        android:layout_marginEnd="24dp"
         android:ellipsize="end"
         android:lines="1"
-        android:text="@string/sample_name"
-        android:textColor="?textAppearanceBody1"
+        android:text="Иванов Иван"
+        android:textColor="#DE000000"
         android:textSize="16sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintEnd_toStartOf="@+id/imageView4"
         app:layout_constraintStart_toEndOf="@+id/topImageView"
         app:layout_constraintTop_toTopOf="@+id/guideline_top" />
 
@@ -61,48 +62,49 @@
         android:id="@+id/textInformation"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginEnd="56dp"
+
         android:ellipsize="end"
+
         android:lines="2"
-        android:text="@string/sample_information"
-        android:textColor="?textAppearanceBody2"
+        android:text="Только что выпустился из универа, с Android знаком не с 12 лет, много писал своих проектов"
+        android:textColor="#99000000"
         android:textSize="14sp"
-        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/textName"
         app:layout_constraintStart_toEndOf="@+id/topImageView"
         app:layout_constraintTop_toBottomOf="@+id/textName" />
 
     <ImageView
         android:id="@+id/imageView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_width="10dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="16dp"
         android:layout_marginEnd="24dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintEnd_toStartOf="@+id/recycler_view"
+        app:layout_constraintTop_toTopOf="@+id/guideline_top"
         app:srcCompat="@drawable/ic_baseline_arrow" />
 
     <View
         android:id="@+id/underline"
-        style="@style/UnderlineStyle"
+        android:layout_width="0dp"
+        android:layout_height="1dp"
         android:layout_marginTop="7dp"
-        app:layout_constraintEnd_toEndOf="parent"
+        android:background="#1F000000"
+        app:layout_constraintEnd_toStartOf="@+id/recycler_view"
         app:layout_constraintStart_toStartOf="@+id/textInformation"
-        app:layout_constraintTop_toBottomOf="@+id/textInformation"/>
+        app:layout_constraintTop_toBottomOf="@+id/textInformation"
+        tools:ignore="MissingConstraints" />
 
     <androidx.constraintlayout.widget.ConstraintLayout
         android:id="@+id/main_banner"
-        android:layout_width="match_parent"
+        android:layout_width="350dp"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:background="?dialogTheme"
+        android:layout_marginTop="24dp"
+        android:background="#FAFAFA"
         android:elevation="8dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/underline">
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="@+id/guideline_right"
+        app:layout_constraintTop_toBottomOf="@+id/underline"
+        app:layout_constraintVertical_bias="0.3">
 
         <TextView
             android:id="@+id/text_top_information"
@@ -113,8 +115,8 @@
             android:layout_marginEnd="16dp"
             android:ellipsize="end"
             android:lines="1"
-            android:text="@string/new_app"
-            android:textColor="?textAppearanceBody1"
+            android:text="Новая заявка"
+            android:textColor="#DE000000"
             android:textSize="24sp"
             app:layout_constraintEnd_toStartOf="@+id/image_view_in_banner"
             app:layout_constraintHorizontal_bias="0.0"
@@ -130,8 +132,8 @@
             android:layout_marginEnd="16dp"
             android:ellipsize="end"
             android:lines="2"
-            android:text="@string/sample_information_2"
-            android:textColor="?textAppearanceBody2"
+            android:text="Здравствуйте, меня зовут Глеб, ещё не поздно подать заявку?"
+            android:textColor="#99000000"
             android:textSize="14sp"
             app:layout_constraintEnd_toStartOf="@+id/image_view_in_banner"
             app:layout_constraintStart_toStartOf="parent"
@@ -152,20 +154,19 @@
             style="@style/Widget.AppCompat.Button.Borderless.Colored"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
+            android:layout_marginStart="8dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="11dp"
             android:paddingLeft="8dp"
             android:paddingTop="9.6dp"
             android:paddingRight="8dp"
             android:paddingBottom="9.6dp"
-            android:text="@string/accept"
-            android:textColor="?buttonTint"
+            android:text="Принять"
+            android:textColor="#6202EE"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/text_other_inform"
-            app:layout_constraintVertical_bias="0.0" />
+            app:layout_constraintTop_toBottomOf="@+id/text_other_inform" />
 
         <Button
             android:id="@+id/button_reject"
@@ -179,8 +180,8 @@
             android:paddingTop="9.6dp"
             android:paddingRight="8dp"
             android:paddingBottom="9.6dp"
-            android:text="@string/reject"
-            android:textColor="?buttonTint"
+            android:text="Отклонить"
+            android:textColor="#6202EE"
             android:textSize="14sp"
             app:layout_constraintBottom_toBottomOf="@+id/button_accept"
             app:layout_constraintStart_toEndOf="@+id/button_accept"
@@ -193,12 +194,13 @@
         android:id="@+id/recycler_view"
         android:layout_width="0dp"
         android:layout_height="0dp"
+        android:layout_marginStart="32dp"
         app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="@+id/guideline_right"
-        app:layout_constraintTop_toBottomOf="@+id/main_banner"
-        app:layout_constraintVertical_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/main_banner"
+        app:layout_constraintTop_toBottomOf="@+id/toolbar"
+        app:layout_constraintVertical_bias="1.0"
         tools:listitem="@layout/banner_item" />
 
 
