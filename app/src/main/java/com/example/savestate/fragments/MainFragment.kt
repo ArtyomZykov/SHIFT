@@ -80,7 +80,6 @@ class MainFragment : Fragment() {
         val resultPhoneBookList = mutableListOf<PhoneItem>()
         val DISPLAY_NAME = ContactsContract.CommonDataKinds.Phone.DISPLAY_NAME
         val NUMBER = ContactsContract.CommonDataKinds.Phone.NUMBER
-        var n: Int = 1
         cursor?.use {
             val nameIndex = cursor.getColumnIndex(DISPLAY_NAME)
             val phoneIndex = cursor.getColumnIndex(NUMBER)
@@ -88,8 +87,7 @@ class MainFragment : Fragment() {
             while (cursor.moveToNext()) {
                 val _name = cursor.getString(nameIndex)
                 val _phone = cursor.getString(phoneIndex)
-                resultPhoneBookList.add(PhoneItem(name = _name, phone = _phone, id = n))
-                n++
+                resultPhoneBookList.add(PhoneItem(name = _name, phone = _phone))
             }
         }
 
