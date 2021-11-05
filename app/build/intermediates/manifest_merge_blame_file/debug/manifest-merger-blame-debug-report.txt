@@ -19,7 +19,7 @@
 14        android:allowBackup="true"
 14-->D:\Hidden desktop\AndroidProjects\SHIFT_HW\2021_q4_zykov\app\src\main\AndroidManifest.xml:8:9-35
 15        android:appComponentFactory="androidx.core.app.CoreComponentFactory"
-15-->[androidx.core:core:1.6.0] C:\Users\zykov\.gradle\caches\transforms-3\7cabb0b7df62f3b93c656c79795a54ee\transformed\core-1.6.0\AndroidManifest.xml:24:18-86
+15-->[androidx.core:core:1.7.0] C:\Users\zykov\.gradle\caches\transforms-3\56204a1438ebc3ba7af24f99926093ed\transformed\core-1.7.0\AndroidManifest.xml:24:18-86
 16        android:debuggable="true"
 17        android:icon="@mipmap/ic_launcher"
 17-->D:\Hidden desktop\AndroidProjects\SHIFT_HW\2021_q4_zykov\app\src\main\AndroidManifest.xml:9:9-43
@@ -34,8 +34,8 @@
 22-->D:\Hidden desktop\AndroidProjects\SHIFT_HW\2021_q4_zykov\app\src\main\AndroidManifest.xml:13:9-47
 23        <activity
 23-->D:\Hidden desktop\AndroidProjects\SHIFT_HW\2021_q4_zykov\app\src\main\AndroidManifest.xml:14:9-22:20
-24            android:name="com.example.savestate.MainActivity"
-24-->D:\Hidden desktop\AndroidProjects\SHIFT_HW\2021_q4_zykov\app\src\main\AndroidManifest.xml:15:13-41
+24            android:name="com.example.savestate.ui.MainActivity"
+24-->D:\Hidden desktop\AndroidProjects\SHIFT_HW\2021_q4_zykov\app\src\main\AndroidManifest.xml:15:13-44
 25            android:exported="true" >
 25-->D:\Hidden desktop\AndroidProjects\SHIFT_HW\2021_q4_zykov\app\src\main\AndroidManifest.xml:16:13-36
 26            <intent-filter>
@@ -51,13 +51,13 @@
 31        </activity>
 32
 33        <service
-33-->[androidx.room:room-runtime:2.3.0] C:\Users\zykov\.gradle\caches\transforms-3\2ec1915d280d38828f359d963b673a57\transformed\room-runtime-2.3.0\AndroidManifest.xml:25:9-28:40
+33-->[androidx.room:room-runtime:2.3.0] C:\Users\zykov\.gradle\caches\transforms-3\355c6a7fbe4db646612681154a4018cb\transformed\room-runtime-2.3.0\AndroidManifest.xml:25:9-28:40
 34            android:name="androidx.room.MultiInstanceInvalidationService"
-34-->[androidx.room:room-runtime:2.3.0] C:\Users\zykov\.gradle\caches\transforms-3\2ec1915d280d38828f359d963b673a57\transformed\room-runtime-2.3.0\AndroidManifest.xml:26:13-74
+34-->[androidx.room:room-runtime:2.3.0] C:\Users\zykov\.gradle\caches\transforms-3\355c6a7fbe4db646612681154a4018cb\transformed\room-runtime-2.3.0\AndroidManifest.xml:26:13-74
 35            android:directBootAware="true"
-35-->[androidx.room:room-runtime:2.3.0] C:\Users\zykov\.gradle\caches\transforms-3\2ec1915d280d38828f359d963b673a57\transformed\room-runtime-2.3.0\AndroidManifest.xml:27:13-43
+35-->[androidx.room:room-runtime:2.3.0] C:\Users\zykov\.gradle\caches\transforms-3\355c6a7fbe4db646612681154a4018cb\transformed\room-runtime-2.3.0\AndroidManifest.xml:27:13-43
 36            android:exported="false" />
-36-->[androidx.room:room-runtime:2.3.0] C:\Users\zykov\.gradle\caches\transforms-3\2ec1915d280d38828f359d963b673a57\transformed\room-runtime-2.3.0\AndroidManifest.xml:28:13-37
+36-->[androidx.room:room-runtime:2.3.0] C:\Users\zykov\.gradle\caches\transforms-3\355c6a7fbe4db646612681154a4018cb\transformed\room-runtime-2.3.0\AndroidManifest.xml:28:13-37
 37    </application>
 38
 39</manifest>

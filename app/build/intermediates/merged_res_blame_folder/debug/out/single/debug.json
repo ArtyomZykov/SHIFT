@@ -20,6 +20,10 @@
         "source": "D:\\Hidden desktop\\AndroidProjects\\SHIFT_HW\\2021_q4_zykov\\app\\src\\main\\res\\mipmap-anydpi-v26\\ic_launcher_round.xml"
     },
     {
+        "merged": "D:\\Hidden desktop\\AndroidProjects\\SHIFT_HW\\2021_q4_zykov\\app\\build\\intermediates\\merged_res\\debug\\layout_banner_item.xml.flat",
+        "source": "D:\\Hidden desktop\\AndroidProjects\\SHIFT_HW\\2021_q4_zykov\\app\\src\\main\\res\\layout\\banner_item.xml"
+    },
+    {
         "merged": "D:\\Hidden desktop\\AndroidProjects\\SHIFT_HW\\2021_q4_zykov\\app\\build\\intermediates\\merged_res\\debug\\layout_fragment_start.xml.flat",
         "source": "D:\\Hidden desktop\\AndroidProjects\\SHIFT_HW\\2021_q4_zykov\\app\\src\\main\\res\\layout\\fragment_start.xml"
     },
