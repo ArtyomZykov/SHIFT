@@ -3,6 +3,13 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="..\:/Hidden desktop/AndroidProjects/SHIFT_HW/2021_q4_zykov/app/src/main/res/layout-land/activity_main.xml" value="0.13802083333333334" />
+        <entry key="..\:/Hidden desktop/AndroidProjects/SHIFT_HW/2021_q4_zykov/app/src/main/res/layout/activity_main.xml" value="0.36666666666666664" />
+        <entry key="..\:/Hidden desktop/AndroidProjects/SHIFT_HW/2021_q4_zykov/app/src/main/res/layout/banner_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/Hidden desktop/AndroidProjects/SHIFT_HW/2021_q4_zykov/app/src/main/res/layout/fragment_edit.xml" value="0.36666666666666664" />
+        <entry key="..\:/Hidden desktop/AndroidProjects/SHIFT_HW/2021_q4_zykov/app/src/main/res/layout/fragment_list.xml" value="0.48333333333333334" />
+        <entry key="..\:/Hidden desktop/AndroidProjects/SHIFT_HW/2021_q4_zykov/app/src/main/res/layout/student_item.xml" value="0.36666666666666664" />
+        <entry key="..\:/Hidden desktop/AndroidProjects/SHIFT_HW/2021_q4_zykov/app/src/main/res/menu/main_action_menu.xml" value="0.33796296296296297" />
         <entry key="..\:/Hidden desktop/AndroidProjects/SHIFT_HW/di-homework/app/src/main/res/layout/activity_main.xml" value="0.18888888888888888" />
       </map>
     </option>

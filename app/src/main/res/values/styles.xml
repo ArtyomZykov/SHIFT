@@ -5,4 +5,8 @@
         <item name="android:layout_height">1dp</item>
         <item name="android:background">?singleLine</item>
     </style>
+
+    <style name="ProgressBarStyle">
+        <item name="colorAccent">?buttonTint</item>
+    </style>
 </resources>
