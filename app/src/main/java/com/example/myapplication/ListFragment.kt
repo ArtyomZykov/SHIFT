@@ -1,21 +1,17 @@
 package com.example.myapplication
 
 import android.os.Bundle
-import android.view.*
-import androidx.fragment.app.Fragment
+import android.view.LayoutInflater
+import android.view.View
+import android.view.ViewGroup
 import android.widget.Toast
-import android.widget.Toolbar
-import androidx.core.view.get
-import androidx.dynamicanimation.animation.DynamicAnimation
-import androidx.dynamicanimation.animation.FlingAnimation
-import androidx.fragment.app.FragmentManager
+import androidx.fragment.app.Fragment
 import androidx.fragment.app.commit
 import androidx.fragment.app.replace
 import com.example.myapplication.app_objects.BannerItem
 import com.example.myapplication.app_objects.ListItem
 import com.example.myapplication.app_objects.StudentItem
 import com.example.myapplication.main_adapter.MainAdapter
-import kotlinx.android.synthetic.main.activity_main.*
 import kotlinx.android.synthetic.main.fragment_list.*
 
 
@@ -98,10 +94,7 @@ class ListFragment : Fragment() {
                 setReorderingAllowed(true)
                 addToBackStack("EditFragment")
             }
-
         }
-
-        //Toast.makeText(context, "Пора покормить кота!", Toast.LENGTH_LONG).show()
 
         recycler_view?.apply {
             val mainAdapter = MainAdapter(onClick = {
@@ -112,22 +105,11 @@ class ListFragment : Fragment() {
         }
     }
 
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-
-
-    }
-
     override fun onCreateView(
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
-
         return inflater.inflate(R.layout.fragment_list, container, false)
-
-
     }
 
 }
