@@ -7,11 +7,6 @@ import javax.inject.Inject
 class GetSampleStringFromRemoteUseCase @Inject constructor(
     val repository: SampleStringRepository
 ) {
-
-    //TODO: DI
-    //TODO: сделать так, чтобы repository не пересоздавался для каждого UseCase
-    // private val repository: SampleStringRepository = SampleStringRepositoryImpl()
-
     operator fun invoke(): String {
         val fromRemote = repository.getFromRemote()
         val repoInstanceHash = repository.hashCode()

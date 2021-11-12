@@ -10,7 +10,6 @@ import javax.inject.Inject
 
 class MainActivity : AppCompatActivity() {
 
-	//TODO: DI
 	@Inject
 	lateinit var viewModel: MainViewModel
 

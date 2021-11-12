@@ -10,9 +10,6 @@ class MainViewModel @Inject constructor(
     val getSampleStringFromLocalUseCase: GetSampleStringFromLocalUseCase,
     val getSampleStringFromRemoteUseCase: GetSampleStringFromRemoteUseCase
 ) {
-    //TODO: DI
-    // private val getSampleStringFromLocalUseCase = GetSampleStringFromLocalUseCase()
-    // private val getSampleStringFromRemoteUseCase = GetSampleStringFromRemoteUseCase()
 
     private val _state: MutableLiveData<MainState> = MutableLiveData<MainState>()
     val state: LiveData<MainState> = _state

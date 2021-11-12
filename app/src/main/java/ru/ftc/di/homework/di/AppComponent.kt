@@ -16,7 +16,6 @@ interface AppComponent {
 
     @Component.Factory
     interface Factory {
-        // With @BindsInstance, the Context passed in will be available in the graph
         fun create(@BindsInstance context: Context): AppComponent
     }
 

@@ -7,4 +7,5 @@ class SampleStringLocalDataSource @Inject constructor() : SampleStringDataSource
     private val mockedCache = "String from local data source"
 
     override fun get(): String = mockedCache
+
 }

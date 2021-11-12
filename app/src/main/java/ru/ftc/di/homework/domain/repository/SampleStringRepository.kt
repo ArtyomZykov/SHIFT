@@ -5,4 +5,5 @@ interface SampleStringRepository {
     fun getFromRemote(): String
 
     fun getFromLocal(): String
+
 }

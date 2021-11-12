@@ -12,11 +12,6 @@ class SampleStringRepositoryImpl @Inject constructor(
     @param: Named("remote") val remoteDataSource: SampleStringDataSource
 ) : SampleStringRepository {
 
-    // TODO: DI
-
-    // val localDataSource: SampleStringDataSource = SampleStringLocalDataSource()
-    // val remoteDataSource: SampleStringDataSource = SampleStringRemoteDataSource()
-
     override fun getFromRemote(): String =
         remoteDataSource.get()
 

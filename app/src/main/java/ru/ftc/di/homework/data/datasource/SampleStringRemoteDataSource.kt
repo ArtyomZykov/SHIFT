@@ -7,4 +7,5 @@ class SampleStringRemoteDataSource @Inject constructor() : SampleStringDataSourc
     private val mockedAnswer = "String from remote data source"
 
     override fun get(): String = mockedAnswer
+
 }
