@@ -15,7 +15,7 @@ class MainActivity : AppCompatActivity(R.layout.activity_main) {
             supportFragmentManager.commit {
                     replace<ListFragment>(R.id.container)
                     setReorderingAllowed(true)
-                    addToBackStack("FirstFragment")
+                    addToBackStack("ListFragment")
             }
         }
 

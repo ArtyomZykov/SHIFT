@@ -38,8 +38,10 @@ class EditFragment : Fragment() {
 
             val hideEditText = ObjectAnimator.ofFloat(editText, View.ALPHA, 0f)
                 .setDuration(300)
+
             val hideEnterBtn = ObjectAnimator.ofFloat(enter_btn, View.ALPHA, 0f)
                 .setDuration(300)
+
             val visibleProgressBar = ObjectAnimator.ofFloat(progressBar, View.ALPHA, 1f)
                 .setDuration(800)
 

@@ -14,11 +14,33 @@ android {
         targetSdk 31
         versionCode 1
         versionName "1.0"
-
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
 
+    flavorDimensions "version"
+
+    productFlavors {
+
+        create("dev") {
+            dimension = "version"
+            applicationIdSuffix = ".dev"
+            versionNameSuffix = "-dev"
+        }
+
+        create("live") {
+            dimension = "version"
+            applicationIdSuffix = ".live"
+            versionNameSuffix = "-live"
+        }
+
+    }
+
+
+
+
     buildTypes {
+        
+
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
