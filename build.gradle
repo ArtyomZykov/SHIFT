@@ -1,4 +1,9 @@
-// Top-level build file where you can add configuration options common to all sub-projects/modules.
+ext {
+    var = 'D:\\Hidden desktop\\AndroidProjects\\SHIFT_HW\\2021_q4_zykov\\keystore.jks'
+    var1 = '123456'
+    var2 = '123456'
+    var3 = '123456'
+}// Top-level build file where you can add configuration options common to all sub-projects/modules.
 buildscript {
     repositories {
         google()
