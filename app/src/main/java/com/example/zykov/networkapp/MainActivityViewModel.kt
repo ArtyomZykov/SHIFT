@@ -12,9 +12,11 @@ import okhttp3.MultipartBody
 import okhttp3.RequestBody
 import java.io.File
 
+
 class MainActivityViewModel : ViewModel() {
 
-    fun uploadPng() {
+    fun uploadPng(activity: MainActivity) {
+
         viewModelScope.launch(Dispatchers.IO) {
 
             val file = File(Environment.getExternalStorageDirectory().path + "/Download/123.png")
@@ -23,6 +25,10 @@ class MainActivityViewModel : ViewModel() {
 
             val response = api.postPng(body)
             Log.d("TestServerAnswer", response.toString())
+
+            viewModelScope.launch(Dispatchers.Main) {
+                activity.cBackground()
+            }
 
         }
 

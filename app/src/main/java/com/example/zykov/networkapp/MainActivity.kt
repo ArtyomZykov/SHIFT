@@ -5,34 +5,38 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
+import androidx.lifecycle.ViewModelProvider
 import kotlinx.android.synthetic.main.activity_main.*
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity(R.layout.activity_main) {
 
-    private val viewModel: MainActivityViewModel = MainActivityViewModel()
+
+    private lateinit var viewModel: MainActivityViewModel
+
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+        viewModel = ViewModelProvider(this)[MainActivityViewModel::class.java]
         uploadButton.setOnClickListener { uploadOperation() }
     }
 
-    private fun uploadOperation() {
+    fun cBackground() {
+        background.setBackgroundColor(ContextCompat.getColor(this, R.color.black))
+    }
 
+    private fun uploadOperation() {
         val permissionFlag = ActivityCompat.checkSelfPermission(
-                this,
-                Manifest.permission.READ_EXTERNAL_STORAGE
-            )
+            this,
+            Manifest.permission.READ_EXTERNAL_STORAGE
+        )
         if (permissionFlag != PackageManager.PERMISSION_GRANTED) {
             ActivityCompat.requestPermissions(
                 this,
                 arrayOf(Manifest.permission.READ_EXTERNAL_STORAGE), 1
             )
         }
-
-        viewModel.uploadPng()
+        viewModel.uploadPng(activity = this)
     }
-
-
 }
