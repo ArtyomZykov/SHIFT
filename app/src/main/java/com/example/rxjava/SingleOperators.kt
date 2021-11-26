@@ -47,6 +47,7 @@ object SingleOperators {
 		 */
 		fun solve(provider: DataProvider): Single<Int> =
 			TODO()
+			//Single.just(provider.get())
 
 		interface DataProvider {
 
@@ -60,7 +61,10 @@ object SingleOperators {
 		 * Уменьшить значение из [source] на единицу.
 		 */
 		fun solve(source: Observable<Int>): Observable<Int> =
-			TODO()
+			source.map {
+				it - 1
+			}
+
 	}
 
 	object Task5 {
@@ -73,7 +77,9 @@ object SingleOperators {
 		 * Необходимо создать пользователя с указанным именем и вернуть сущность User.
 		 */
 		fun solve(name: String, api: UserApi): Single<User> =
-			TODO()
+			api.create(name).flatMap {
+				api.get(it)
+			}
 
 		interface UserApi {
 
@@ -91,7 +97,10 @@ object SingleOperators {
 		 * Предполагается, что запросы getId(), getName(), getAge() уже выполняются на разных тредах.
 		 */
 		fun solve(userApi: UserApi): Single<User> =
-			TODO()
+			Single.zip(userApi.getId(), userApi.getName(), userApi.getAge(), { id, name, age ->
+				User(id, name, age)
+			})
+
 
 		interface UserApi {
 

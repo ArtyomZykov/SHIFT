@@ -172,7 +172,7 @@ object ObservableOperators {
          * Необходимо реализовать поток с упакованными пирогами. Горелые пироги не пропускать.
          */
         fun solve(source: Observable<Pie>): Observable<Package> =
-            source.filter{
+            source.filter {
                 !it.burnt
             }.map {
                 it.run {
@@ -197,7 +197,10 @@ object ObservableOperators {
                 loader.load(it)
             }
 
-        interface FilesLoader { fun load(uri: String): Observable<File> }
+        interface FilesLoader {
+            fun load(uri: String): Observable<File>
+        }
+
         data class File(val data: Int)
     }
 
@@ -212,7 +215,7 @@ object ObservableOperators {
          * "1", "2", "3", "a", "b", "c"
          */
         fun solve(digits: Observable<String>, letters: Observable<String>): Observable<String> =
-            TODO()
+            digits.concatWith(letters)
     }
 
     object Task15 {
@@ -227,7 +230,7 @@ object ObservableOperators {
          * Пример выходного потока: "1", "a", "2", "b", "3", "c"
          */
         fun solve(digits: Observable<String>, letters: Observable<String>): Observable<String> =
-            TODO()
+            digits.mergeWith(letters)
     }
 
     object Task16 {
@@ -241,7 +244,10 @@ object ObservableOperators {
          * "11", "22", "33"
          */
         fun solve(first: Observable<Int>, second: Observable<Int>): Observable<Int> =
-            TODO()
+            Observable.zip(first, second, { f, s ->
+                f + s
+            })
+
     }
 
     object Task17 {
@@ -250,7 +256,7 @@ object ObservableOperators {
          * Выполнить задержку выпуска каждого значения из [source] на 1 секунду.
          */
         fun solve(source: Observable<Int>): Observable<Int> =
-            TODO()
+            source.delay(1, TimeUnit.SECONDS)
     }
 
     object Task18 {
@@ -261,5 +267,7 @@ object ObservableOperators {
          */
         fun solve(source: Observable<String>, timeout: Long): Observable<String> =
             TODO()
+            //source.debounce(timeout / 1000, TimeUnit.SECONDS)
+            //source.debounce(timeout, TimeUnit.MICROSECONDS)
     }
 }

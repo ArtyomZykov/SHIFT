@@ -1,8 +1,8 @@
 package com.example.rxjava
 
-import io.reactivex.rxjava3.core.Completable
 import io.reactivex.rxjava3.core.Maybe
 import io.reactivex.rxjava3.core.Single
+
 
 object MaybeOperators {
 
@@ -31,7 +31,6 @@ object MaybeOperators {
 	}
 
 	object Task3 {
-
 		/**
 		 * Завершать поток, если в [source] будет отрицательное число.
 		 * Возвращать значение, если оно будет положительным.
@@ -46,6 +45,6 @@ object MaybeOperators {
 		 * Если [first] поток не вернет значение, то переключить на [second] поток.
 		 */
 		fun solve(first: Maybe<Int>, second: Single<Int>): Single<Int> =
-			TODO()
+			first.switchIfEmpty(second)
 	}
 }
