@@ -1,226 +1,265 @@
 package com.example.rxjava
 
 import io.reactivex.rxjava3.core.Observable
+import java.util.Date.from
 import java.util.concurrent.TimeUnit
 
 object ObservableOperators {
 
-	object Task1 {
+    object Task1 {
 
-		/**
-		 * Реализовать поток данных вида:
-		 * Hello
-		 *
-		 * Успешно завершить передачу данных.
-		 */
-		fun solve(): Observable<String> =
-			TODO()
-	}
+        /**
+         * Реализовать поток данных вида:
+         * Hello
+         *
+         * Успешно завершить передачу данных.
+         */
+        fun solve(): Observable<String> =
+            Observable.just("Hello")
+    }
 
-	object Task2 {
+    object Task2 {
 
-		/**
-		 * Реализовать поток данных вида:
-		 * Понедельник, Вторник, Среда, Четверг, Пятница, Суббота, Воскресенье
-		 *
-		 * Успешно завершить передачу данных.
-		 */
-		fun solve(): Observable<String> =
-			TODO()
-	}
+        /**
+         * Реализовать поток данных вида:
+         * Понедельник, Вторник, Среда, Четверг, Пятница, Суббота, Воскресенье
+         *
+         * Успешно завершить передачу данных.
+         */
+        fun solve(): Observable<String> =
+            Observable.just(
+                "Понедельник",
+                "Вторник",
+                "Среда",
+                "Четверг",
+                "Пятница",
+                "Суббота",
+                "Воскресенье"
+            )
+    }
 
-	object Task3 {
+    object Task3 {
 
-		/**
-		 * Реализовать поток данных вида:
-		 * 1, 2, 3, 4, 5, ... , 100
-		 *
-		 * Успешно завершить передачу данных.
-		 */
-		fun solve(): Observable<Int> =
-			TODO()
-	}
+        /**
+         * Реализовать поток данных вида:
+         * 1, 2, 3, 4, 5, ... , 100
+         *
+         * Успешно завершить передачу данных.
+         */
+        fun solve(): Observable<Int> =
+            Observable.range(1, 100)
+    }
 
-	object Task4 {
+    object Task4 {
 
-		/**
-		 * Реализовать поток данных вида:
-		 * 5, 4, 3, 2, 1
-		 *
-		 * Завершить передачу данных ошибкой c message="Boom".
-		 */
-		fun solve(): Observable<Int> =
-			TODO()
-	}
+        /**
+         * Реализовать поток данных вида:
+         * 5, 4, 3, 2, 1
+         *
+         * Завершить передачу данных ошибкой c message="Boom".
+         */
+        fun solve(): Observable<Int> =
+            Observable.just(5, 4, 3, 2, 1, 0).flatMap {
+                if (it == 0) {
+                    Observable.error(Throwable(message = "Boom"))
+                } else {
+                    Observable.just(it)
+                }
+            }
 
-	object Task5 {
+    }
 
-		/**
-		 * Реализовать поток данных из [list].
-		 *
-		 * Успешно завершить передачу данных.
-		 */
-		fun solve(list: List<String>): Observable<String> =
-			TODO()
-	}
+    object Task5 {
 
-	object Task6 {
+        /**
+         * Реализовать поток данных из [list].
+         *
+         * Успешно завершить передачу данных.
+         */
+        fun solve(list: List<String>): Observable<String> =
+            Observable.fromIterable(list)
 
-		/**
-		 * Установить слушателя и преобразовать сообщения, получемые из чата в поток сообщений.
-		 * При фатальной ошибке чата завершать поток с ошибкой.
-		 */
-		fun solve(chat: Chat): Observable<String> =
-			TODO()
+    }
 
-		interface Chat {
+    object Task6 {
 
-			fun setMessageListener(listener: MessageListener)
-		}
+        /**
+         * Установить слушателя и преобразовать сообщения, получемые из чата в поток сообщений.
+         * При фатальной ошибке чата завершать поток с ошибкой.
+         */
+        fun solve(chat: Chat): Observable<String> =
+            TODO()
+        /*
+        Observable.create { start ->
+            chat.setMessageListener(
+                MessageListener(
+                    start.onNext(start), start.onError(start)
+                )
+            )
+        }
+         */
 
-		class MessageListener(
-			val onMessage: (String) -> Unit,
-			val onFatalError: (Throwable) -> Unit,
-		)
-	}
+        interface Chat {
 
-	object Task7 {
+            fun setMessageListener(listener: MessageListener)
+        }
 
-		/**
-		 * Оставить только нечетные числа из [source].
-		 */
-		fun solve(source: Observable<Int>): Observable<Int> =
-			TODO()
-	}
+        class MessageListener(
+            val onMessage: (String) -> Unit,
+            val onFatalError: (Throwable) -> Unit,
+        )
+    }
 
-	object Task8 {
+    object Task7 {
 
-		/**
-		 * Оставить только первые 5 значений из [source].
-		 */
-		fun solve(source: Observable<Int>): Observable<Int> =
-			TODO()
-	}
+        /**
+         * Оставить только нечетные числа из [source].
+         */
+        fun solve(source: Observable<Int>): Observable<Int> =
+            source.filter {
+                it % 2 != 0
+            }
 
-	object Task9 {
+    }
 
-		/**
-		 * Проигнорировать первые 5 значений из [source].
-		 */
-		fun solve(source: Observable<Int>): Observable<Int> =
-			TODO()
-	}
+    object Task8 {
 
-	object Task10 {
+        /**
+         * Оставить только первые 5 значений из [source].
+         */
+        fun solve(source: Observable<Int>): Observable<Int> =
+            source.filter {
+                it.dec() < 5
+            }
+    }
 
-		/**
-		 * Не пропускать повторяющиеся значения из [source].
-		 */
-		fun solve(source: Observable<String>): Observable<String> =
-			TODO()
-	}
+    object Task9 {
 
-	object Task11 {
+        /**
+         * Проигнорировать первые 5 значений из [source].
+         */
+        fun solve(source: Observable<Int>): Observable<Int> =
+            source.skip(5)
 
-		/**
-		 * Увеличить каждое значение из [source] на единицу.
-		 */
-		fun solve(source: Observable<Int>): Observable<Int> =
-			TODO()
-	}
+    }
 
-	object Task12 {
+    object Task10 {
 
-		/**
-		 * [source] поставляет пироги.
-		 *
-		 * Необходимо реализовать поток с упакованными пирогами. Горелые пироги не пропускать.
-		 */
-		fun solve(source: Observable<Pie>): Observable<Package> =
-			TODO()
+        /**
+         * Не пропускать повторяющиеся значения из [source].
+         */
+        fun solve(source: Observable<String>): Observable<String> =
+            source.distinct()
 
-		data class Pie(val color: String, val burnt: Boolean)
-		data class Package(val pie: Pie)
-	}
+    }
 
-	object Task13 {
+    object Task11 {
 
-		/**
-		 * [uriObservable] поставляет поток uri.
-		 * [loader] возвращает поток файлов, находящихся по указанному uri.
-		 *
-		 * Необходимо реализовать поток файлов полученных по всем uri из [uriObservable]
-		 */
-		fun solve(uriObservable: Observable<String>, loader: FilesLoader): Observable<File> =
-			TODO()
+        /**
+         * Увеличить каждое значение из [source] на единицу.
+         */
+        fun solve(source: Observable<Int>): Observable<Int> =
+            source.map {
+                it + 1
+            }
+    }
 
-		interface FilesLoader {
+    object Task12 {
 
-			fun load(uri: String): Observable<File>
-		}
+        /**
+         * [source] поставляет пироги.
+         *
+         * Необходимо реализовать поток с упакованными пирогами. Горелые пироги не пропускать.
+         */
+        fun solve(source: Observable<Pie>): Observable<Package> =
+            source.filter{
+                !it.burnt
+            }.map {
+                it.run {
+                    Package(it)
+                }
+            }
 
-		data class File(val data: Int)
-	}
+        data class Pie(val color: String, val burnt: Boolean)
+        data class Package(val pie: Pie)
+    }
 
-	object Task14 {
+    object Task13 {
 
-		/**
-		 * При входных данных:
-		 * [digits] - "1", "2", "3"
-		 * [letters] - "a", "b", "c"
-		 *
-		 * На выходе ожидаются сначала все значения из [digits] и следом все значения из [letters]:
-		 * "1", "2", "3", "a", "b", "c"
-		 */
-		fun solve(digits: Observable<String>, letters: Observable<String>): Observable<String> =
-			TODO()
-	}
+        /**
+         * [uriObservable] поставляет поток uri.
+         * [loader] возвращает поток файлов, находящихся по указанному uri.
+         *
+         * Необходимо реализовать поток файлов полученных по всем uri из [uriObservable]
+         */
+        fun solve(uriObservable: Observable<String>, loader: FilesLoader): Observable<File> =
+            uriObservable.flatMap {
+                loader.load(it)
+            }
 
-	object Task15 {
+        interface FilesLoader { fun load(uri: String): Observable<File> }
+        data class File(val data: Int)
+    }
 
-		/**
-		 * При входных данных:
-		 * [digits] - "1", "2", "3"
-		 * [letters] - "a", "b", "c"
-		 *
-		 * На выходе ожидается объединенный поток из значений [digits] и [letters].
-		 * Порядок будет зависить от того с какой задержкой будут эмитить [digits] и [letters].
-		 * Пример выходного потока: "1", "a", "2", "b", "3", "c"
-		 */
-		fun solve(digits: Observable<String>, letters: Observable<String>): Observable<String> =
-			TODO()
-	}
+    object Task14 {
 
-	object Task16 {
+        /**
+         * При входных данных:
+         * [digits] - "1", "2", "3"
+         * [letters] - "a", "b", "c"
+         *
+         * На выходе ожидаются сначала все значения из [digits] и следом все значения из [letters]:
+         * "1", "2", "3", "a", "b", "c"
+         */
+        fun solve(digits: Observable<String>, letters: Observable<String>): Observable<String> =
+            TODO()
+    }
 
-		/**
-		 * При входных данных:
-		 * [first] - "1", "2", "3"
-		 * [second] - "10", "20", "30"
-		 *
-		 * На выходе ожидается поток с попарными суммами значений [first] и [second]:
-		 * "11", "22", "33"
-		 */
-		fun solve(first: Observable<Int>, second: Observable<Int>): Observable<Int> =
-			TODO()
-	}
+    object Task15 {
 
-	object Task17 {
+        /**
+         * При входных данных:
+         * [digits] - "1", "2", "3"
+         * [letters] - "a", "b", "c"
+         *
+         * На выходе ожидается объединенный поток из значений [digits] и [letters].
+         * Порядок будет зависить от того с какой задержкой будут эмитить [digits] и [letters].
+         * Пример выходного потока: "1", "a", "2", "b", "3", "c"
+         */
+        fun solve(digits: Observable<String>, letters: Observable<String>): Observable<String> =
+            TODO()
+    }
 
-		/**
-		 * Выполнить задержку выпуска каждого значения из [source] на 1 секунду.
-		 */
-		fun solve(source: Observable<Int>) : Observable<Int> =
-			TODO()
-	}
+    object Task16 {
 
-	object Task18 {
+        /**
+         * При входных данных:
+         * [first] - "1", "2", "3"
+         * [second] - "10", "20", "30"
+         *
+         * На выходе ожидается поток с попарными суммами значений [first] и [second]:
+         * "11", "22", "33"
+         */
+        fun solve(first: Observable<Int>, second: Observable<Int>): Observable<Int> =
+            TODO()
+    }
 
-		/**
-		 * Вернуть Observable, который эмитит значение из [source] только,
-		 * если с момента выпуска предыдущего значения прошло [timeout] милисекунд.
-		 */
-		fun solve(source: Observable<String>, timeout: Long) : Observable<String> =
-			TODO()
-	}
+    object Task17 {
+
+        /**
+         * Выполнить задержку выпуска каждого значения из [source] на 1 секунду.
+         */
+        fun solve(source: Observable<Int>): Observable<Int> =
+            TODO()
+    }
+
+    object Task18 {
+
+        /**
+         * Вернуть Observable, который эмитит значение из [source] только,
+         * если с момента выпуска предыдущего значения прошло [timeout] милисекунд.
+         */
+        fun solve(source: Observable<String>, timeout: Long): Observable<String> =
+            TODO()
+    }
 }
