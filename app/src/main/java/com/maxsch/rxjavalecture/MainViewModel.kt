@@ -31,58 +31,48 @@ class MainViewModel(
 	val result: LiveData<Map<Animal, Int>> = _result
 
 
-	private val exceptionHandler = CoroutineExceptionHandler { _, throwable ->
-		handleLoadingError(throwable)
-	}
-
 	fun getData() {
+		try {
+			viewModelScope.launch(Dispatchers.IO) {
+				var dogsList: List<Dog> = emptyList()
+				var catsList: List<Cat> = emptyList()
+				var ratsList: List<Rat> = emptyList()
 
-		viewModelScope.launch(Dispatchers.IO) {
-			var dogsList: List<Dog> = emptyList()
-			var catsList: List<Cat> = emptyList()
-			var ratsList: List<Rat> = emptyList()
+				val dogsJob = async {
+					dogsList = dogsApi.getDogs()
+					Log.i("Test", "getDogs")
+				}
+				val catsJob = async {
+					catsList = catsApi.getCats()
+					Log.i("Test", "getCats")
+				}
+				val ratsJob = async {
+					ratsList = ratsApi.getRats()
+					Log.i("Test", "getRats")
+				}
 
-			val dogsJob = async {
-				dogsList = dogsApi.getDogs()
-				Log.i("Test", "getDogs")
+				awaitFrame()
+				val animalsList: List<Animal> = dogsList + catsList + ratsList
+				var animalsPricesMap: Map<Animal, Int> = emptyMap()
+				val priceJob = async {
+					for (item in animalsList) {
+						Log.i("Test2", item.toString())
+						animalsPricesMap += mapOf(item to priceApi.getPrice(item))
+					}
+				}
+				awaitFrame()
+				handleAnimalPrices(animalsPricesMap)
 			}
-			val catsJob = async {
-				catsList = catsApi.getCats()
-				Log.i("Test", "getCats")
-			}
-			val ratsJob = async {
-				ratsList = ratsApi.getRats()
-				Log.i("Test", "getRats")
-			}
-
-			awaitFrame()
-			val animalsList: List<Animal> = dogsList + catsList + ratsList
-			var animalsPricesMap: Map<Animal, Int> = emptyMap()
-			for (item in animalsList) {
-				Log.i("Test2", item.toString())
-				animalsPricesMap = mapOf(item to priceApi.getPrice(item))
-			}
-
-
-			// val numbersMap: Map<Animal, Int> = mapOf(dogsList!![0] to 2, dogsList!![1] to 2)
-
-			_result.postValue(animalsPricesMap)
-            //val animalsList: List<Animal>? = dogsList + catsList + ratsList
-
-
-            //Log.i("Test", "$dogsList + $catsList + $ratsList")
-
-
-
+		} catch (error: IllegalArgumentException) {
+			handleLoadingError(error)
 		}
-
 	}
 
 	private fun handleAnimalPrices(animalToPriceMap: Map<Animal, Int>) {
-		_result.value = animalToPriceMap
+		_result.postValue(animalToPriceMap)
 	}
 
-	private fun handleLoadingError(error: Throwable) {
+	private fun handleLoadingError(error: IllegalArgumentException) {
 		Log.e("MainViewModel", "Failed to load animals and prices", error)
 	}
 }
