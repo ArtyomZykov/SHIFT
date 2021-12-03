@@ -17,10 +17,8 @@ import com.maxsch.rxjavalecture.entities.Animal
 import com.maxsch.rxjavalecture.entities.Cat
 import com.maxsch.rxjavalecture.entities.Dog
 import com.maxsch.rxjavalecture.entities.Rat
-import kotlinx.coroutines.CoroutineExceptionHandler
-import kotlinx.coroutines.async
-import kotlinx.coroutines.awaitAll
-import kotlinx.coroutines.launch
+import kotlinx.coroutines.*
+import kotlinx.coroutines.android.awaitFrame
 
 class MainViewModel(
 	private val catsApi: CatsApi = CatsApiImpl(),
@@ -38,29 +36,42 @@ class MainViewModel(
 	}
 
 	fun getData() {
-		var dogsList: List<Dog>
-		var catsList: List<Cat>
-		var ratsList: List<Rat>
 
-		viewModelScope.launch {
-			val asyncDogs = async {
+		viewModelScope.launch(Dispatchers.IO) {
+			var dogsList: List<Dog> = emptyList()
+			var catsList: List<Cat> = emptyList()
+			var ratsList: List<Rat> = emptyList()
+
+			val dogsJob = async {
 				dogsList = dogsApi.getDogs()
 				Log.i("Test", "getDogs")
 			}
-			val asyncCats = async {
+			val catsJob = async {
 				catsList = catsApi.getCats()
 				Log.i("Test", "getCats")
 			}
-			val asyncRats = async {
+			val ratsJob = async {
 				ratsList = ratsApi.getRats()
 				Log.i("Test", "getRats")
 			}
 
-			var animalsList: Animal
-			
-			if (asyncDogs.isCompleted) {
-				dogsList.also { animalsList = it }
+			awaitFrame()
+			val animalsList: List<Animal> = dogsList + catsList + ratsList
+			var animalsPricesMap: Map<Animal, Int> = emptyMap()
+			for (item in animalsList) {
+				Log.i("Test2", item.toString())
+				animalsPricesMap = mapOf(item to priceApi.getPrice(item))
 			}
+
+
+			// val numbersMap: Map<Animal, Int> = mapOf(dogsList!![0] to 2, dogsList!![1] to 2)
+
+			_result.postValue(animalsPricesMap)
+            //val animalsList: List<Animal>? = dogsList + catsList + ratsList
+
+
+            //Log.i("Test", "$dogsList + $catsList + $ratsList")
+
 
 
 		}
